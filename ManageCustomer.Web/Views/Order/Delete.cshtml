@@ -1,0 +1,26 @@
+@model ManageCustomer.Domain.Entities.Order
+@{
+ ViewData["Title"] = "Delete Order";
+}
+<h2 class="page-title">Delete Order</h2>
+<form asp-action="DeleteConfirmed" method="post">
+ <input type="hidden" asp-for="Id" />
+ <div class="mb-3">
+ <label>Customer</label>
+ <div>@Model.Customer?.FirstName @Model.Customer?.LastName</div>
+ </div>
+ <div class="mb-3">
+ <label>Order Date</label>
+ <div>@Model.OrderDate.ToShortDateString()</div>
+ </div>
+ <div class="mb-3">
+ <label>Total Amount</label>
+ <div>@Model.TotalAmount</div>
+ </div>
+ <div class="mb-3">
+ <label>Notes</label>
+ <div>@Model.Notes</div>
+ </div>
+ <button type="submit" class="btn btn-danger">Delete</button>
+ <a asp-action="Index" class="btn btn-link">Back to List</a>
+</form>

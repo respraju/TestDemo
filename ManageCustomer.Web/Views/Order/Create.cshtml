@@ -1,0 +1,38 @@
+@model ManageCustomer.Domain.Entities.Order
+@{
+ ViewData["Title"] = "Create Order";
+}
+<h2 class="page-title">Create Order</h2>
+<form asp-action="Create" method="post">
+ <div class="row">
+ <div class="mb-3 col-md-6">
+ <label asp-for="CustomerId" class="form-label"></label>
+ <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.Customers"></select>
+ <span asp-validation-for="CustomerId" class="text-danger"></span>
+ </div>
+ <div class="mb-3 col-md-6">
+ <label asp-for="ProductId" class="form-label"></label>
+ <select asp-for="ProductId" class="form-control" asp-items="ViewBag.Products"></select>
+ <span asp-validation-for="ProductId" class="text-danger"></span>
+ </div>
+ </div>
+ <div class="row">
+ <div class="mb-3 col-md-6">
+ <label asp-for="OrderDate" class="form-label"></label>
+ <input asp-for="OrderDate" class="form-control" type="date" />
+ <span asp-validation-for="OrderDate" class="text-danger"></span>
+ </div>
+ <div class="mb-3 col-md-6">
+ <label asp-for="TotalAmount" class="form-label"></label>
+ <input asp-for="TotalAmount" class="form-control" type="number" step="0.01" />
+ <span asp-validation-for="TotalAmount" class="text-danger"></span>
+ </div>
+ </div>
+ <div class="mb-3 col-md-6">
+ <label asp-for="Notes" class="form-label"></label>
+ <input asp-for="Notes" class="form-control" />
+ <span asp-validation-for="Notes" class="text-danger"></span>
+ </div>
+ <button type="submit" class="btn btn-primary">Create</button>
+ <a asp-action="Index" class="btn btn-link">Back to List</a>
+</form>

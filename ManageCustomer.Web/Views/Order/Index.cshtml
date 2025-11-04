@@ -1,0 +1,28 @@
+@model IEnumerable<ManageCustomer.Domain.Entities.Order>
+@{
+ ViewData["Title"] = "Orders";
+}
+<h2 class="page-title">Orders</h2>
+<p>
+ <a asp-action="Create" class="btn btn-primary mb-3">Create New</a>
+</p>
+<div class="row">
+ @foreach (var item in Model)
+ {
+ <div class="col-md-3 mb-4">
+ <div class="card h-100 shadow-sm">
+ <div class="card-body">
+ <h5 class="card-title">Order #@item.Id</h5>
+ <p class="card-text mb-1"><strong>Date:</strong> @item.OrderDate.ToShortDateString()</p>
+ <p class="card-text mb-1"><strong>Customer:</strong> @item.Customer?.FirstName @item.Customer?.LastName</p>
+ <p class="card-text mb-1"><strong>Total:</strong> $@item.TotalAmount</p>
+ <p class="card-text mb-2"><strong>Notes:</strong> @item.Notes</p>
+ <div class="d-flex justify-content-between">
+ <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+ <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ }
+</div>

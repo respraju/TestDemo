@@ -1,0 +1,64 @@
+html {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0000.1rem white, 0000.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background: linear-gradient(135deg, #f8fafc0%, #e3e6ed100%);
+}
+
+.card {
+  border-radius: 1rem;
+}
+
+h1 {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.form-label {
+  color: #258cfb;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #258cfb0%, #6a82fb100%);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #6a82fb0%, #258cfb100%);
+}
+
+header .navbar {
+ background: linear-gradient(90deg, #258cfb0%, #6a82fb100%) !important;
+ color: #fff;
+}
+header .navbar .navbar-brand, header .navbar .nav-link {
+ color: #fff !important;
+ font-weight:500;
+}
+header .navbar .nav-link:hover {
+ color: #e3e6ed !important;
+}
+
+h2.page-title {
+ font-weight:700;
+ letter-spacing:1px;
+ color: #258cfb;
+ margin-bottom:1.5rem;
+}

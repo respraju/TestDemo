@@ -1,0 +1,56 @@
+@model IEnumerable<ManageCustomer.Domain.Entities.Product>
+@{
+ ViewData["Title"] = "Products Page";
+ var page = ViewBag.Page ??1;
+ var pageSize = ViewBag.PageSize ??10;
+ var totalItems = ViewBag.TotalItems ??0;
+ var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+}
+<h2 class="page-title">Products</h2>
+<form asp-action="Index" method="get" class="mb-3">
+ <div class="input-group">
+ <input type="text" name="searchTerm" value="@Context.Request.Query["searchTerm"]" class="form-control" placeholder="Search products..." />
+ <button type="submit" class="btn btn-primary">Search</button>
+ </div>
+</form>
+<p>
+ <a asp-action="Create" class="btn btn-primary mb-3">Create New</a>
+</p>
+<div class="row">
+@foreach (var item in Model)
+{
+ <div class="col-md-3 mb-4">
+ <div class="card h-100 shadow-sm">
+ <div class="card-body">
+ <h5 class="card-title">@item.ProductName</h5>
+ <p class="card-text mb-1"><strong>Category:</strong> @item.Category</p>
+ <p class="card-text mb-1"><strong>Unit:</strong> @item.Unit</p>
+ <p class="card-text mb-1"><strong>Color:</strong> @item.Color</p>
+ <div class="d-flex justify-content-between">
+ <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+ <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+ </div>
+ </div>
+ </div>
+ </div>
+}
+</div>
+@if (totalPages >1)
+{
+ <nav>
+ <ul class="pagination">
+ <li class="page-item @(page ==1 ? "disabled" : "")">
+ <a class="page-link" asp-action="Index" asp-route-page="@(page-1)" asp-route-searchTerm="@ViewBag.SearchTerm">Previous</a>
+ </li>
+ @for (int i =1; i <= totalPages; i++)
+ {
+ <li class="page-item @(i == page ? "active" : "")">
+ <a class="page-link" asp-action="Index" asp-route-page="@i" asp-route-searchTerm="@ViewBag.SearchTerm">@i</a>
+ </li>
+ }
+ <li class="page-item @(page == totalPages ? "disabled" : "")">
+ <a class="page-link" asp-action="Index" asp-route-page="@(page+1)" asp-route-searchTerm="@ViewBag.SearchTerm">Next</a>
+ </li>
+ </ul>
+ </nav>
+}
