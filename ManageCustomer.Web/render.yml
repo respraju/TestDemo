@@ -1,0 +1,8 @@
+﻿services:
+  - type: web
+    name: dotnet-core-app
+    env: docker
+    plan: free
+    repo: https://github.com/respraju/TestDemo.git
+    branch: main
+    autoDeploy: true
